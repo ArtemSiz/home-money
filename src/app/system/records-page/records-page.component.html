@@ -1,0 +1,30 @@
+<div class="title-block">
+  <h3 class="title">
+    Страница записей <span class="sparkline bar"></span>
+  </h3>
+</div>
+
+<section class="section text-center" *ngIf="!isLoaded">
+  <bj-loader></bj-loader>
+</section>
+
+<section class="section" *ngIf="isLoaded">
+  <div class="row">
+    <div class="col-md-6">
+      <bj-add-event
+              [categories]="categories"
+      ></bj-add-event>
+    </div>
+    <div class="col-md-6">
+      <bj-add-category (onCategoryAdd)="newCategoryAdded($event)"></bj-add-category>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <bj-edit-category
+              [categories]="categories"
+              (onCategoryEdit)="categoryWasEdited($event)"
+      ></bj-edit-category>
+    </div>
+  </div>
+</section>
